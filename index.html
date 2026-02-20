@@ -1253,7 +1253,7 @@
       <div class="feature-grid" style="margin:20px 0;">
         <div class="feature-item" style="border-left:4px solid var(--blue-500);">
           <h5>🔁 AUTO</h5>
-          <p>Cycles all 20 patterns automatically. Set it and forget it!</p>
+          <p>Cycles all 22 patterns automatically. Set it and forget it!</p>
         </div>
         <div class="feature-item" style="border-left:4px solid var(--purple-500);">
           <h5>🎲 RANDOM</h5>
@@ -1261,11 +1261,11 @@
         </div>
         <div class="feature-item" style="border-left:4px solid var(--amber-500);">
           <h5>📌 STATIC</h5>
-          <p>Lock one favorite pattern (P0–P20) on repeat.</p>
+          <p>Lock one favorite pattern (P0–P21) on repeat.</p>
         </div>
       </div>
 
-      <h3>All 20 Patterns</h3>
+      <h3>All 22 Patterns</h3>
       <div class="table-wrap">
         <table>
           <thead><tr><th>#</th><th>Name</th><th>Type</th></tr></thead>
@@ -1290,6 +1290,8 @@
             <tr><td>P17</td><td>Parabolic Arc</td><td>Smooth arc</td></tr>
             <tr><td>P18</td><td>Spiral Rise</td><td>Spinning height</td></tr>
             <tr><td>P19</td><td>Grand Finale</td><td>All at maximum!</td></tr>
+            <tr><td>P20</td><td>Sine Wave</td><td>Traveling wave</td></tr>
+            <tr><td>P21</td><td>Equalizer Wave</td><td>All pipes, unique sine heights</td></tr>
           </tbody>
         </table>
       </div>
@@ -1476,6 +1478,7 @@
       </div>
 
       <h3>💬 Chat Commands for Shows</h3>
+      <p>Type these in local chat (owner only). See <a href="#reference">Quick Reference</a> for all chat commands.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Command</th><th>Action</th></tr></thead>
@@ -1487,7 +1490,6 @@
             <tr><td><code>/wx:show vampire</code></td><td>Start Vampire show</td></tr>
             <tr><td><code>/wx:show stop</code></td><td>Stop current show</td></tr>
             <tr><td><code>/wx:show loop</code></td><td>Toggle loop mode</td></tr>
-            <tr><td><code>/wx:straighten</code></td><td>Reset all pipes to vertical (world up)</td></tr>
           </tbody>
         </table>
       </div>
@@ -1755,9 +1757,8 @@
         <span class="cfg-key">LightMode</span> = <span class="cfg-val">1</span> <span class="cfg-comment"># 1=STATIC 2=RGB 3=MULTI 4=THEMED</span><br>
         <span class="cfg-key">Theme</span> = <span class="cfg-val">8</span> <span class="cfg-comment"># Theme 1-10</span><br>
         <span class="cfg-key">WaterColor</span> = <span class="cfg-val">#B0E0E6</span> <span class="cfg-comment"># Default color (hex)</span><br>
-        <span class="cfg-key">PipeStyle</span> = <span class="cfg-val">TALL</span> <span class="cfg-comment"># TALL, ROUND, or CUBE</span><br>
-        <span class="cfg-key">DefaultShape</span> = <span class="cfg-val">NONE</span> <span class="cfg-comment"># Auto arrangement on startup</span><br>
-        <span class="cfg-key">DefaultShapeScale</span> = <span class="cfg-val">1.0</span> <span class="cfg-comment"># 0.5 – 3.0</span>
+        <span class="cfg-key">DefaultShape</span> = <span class="cfg-val">CIRCLE</span> <span class="cfg-comment"># Auto arrangement on startup (NONE, LINE, CIRCLE, ARC, etc.)</span><br>
+        <span class="cfg-key">DefaultShapeScale</span> = <span class="cfg-val">2.0</span> <span class="cfg-comment"># Size multiplier: 0.5 – 3.0</span>
       </div>
 
       <div class="callout callout-warn">
@@ -1915,15 +1916,15 @@
       <div class="menu-tree">🏠 HOME
 ├── 🌍 GLOBAL (all fountains)
 │   ├── ⛲ POWER — ON / OFF
-│   ├── 🔄 SEQUENCE — AUTO / RANDOM / STATIC
+│   ├── 🔄 SEQUENCE — AUTO / RANDOM / STATIC (P0–P21)
 │   ├── 💃 ANIMATE — NORMAL / HYBRID / SPEED
-│   ├── 🎭 SHOWS — 5 shows + Loop + Stop
-│   ├── 🟡 LIGHTS — RGB / MULTI / Themes / Colors
-│   └── ⚙️ SETTINGS — Height / Speed / Spray / etc.
+│   ├── 🎭 SHOWS — 5 shows + Loop + Stop + Music volume
+│   ├── 🟡 LIGHTS — RGB / MULTI / 10 Themes / 51 Colors
+│   └── ⚙️ SETTINGS — Height / Speed / Spray / Wind / Glow / Sound
 │
 ├── ⛲ [Fountain Name] (single fountain)
 │   ├── (same as GLOBAL, plus:)
-│   ├── 🔷 SHAPES — 10 arrangements + sizing
+│   ├── 🔷 SHAPES — 10 arrangements + sizing + Dynamic
 │   └── 🔧 RENAME — change fountain name
 │
 └── 🛠 ADMIN
@@ -1952,6 +1953,8 @@
         <div class="cheat-item"><span class="cheat-what">Rename fountain</span><span class="cheat-how">[Fountain] → 🔧 RENAME</span></div>
         <div class="cheat-item"><span class="cheat-what">Grant access</span><span class="cheat-how">ADMIN → 🔐 ACCESS</span></div>
         <div class="cheat-item"><span class="cheat-what">Fix everything</span><span class="cheat-how">ADMIN → ♻️ RESET ALL</span></div>
+        <div class="cheat-item"><span class="cheat-what">Lock pattern (chat)</span><span class="cheat-how">/wx:pattern 5</span></div>
+        <div class="cheat-item"><span class="cheat-what">Debug mode (chat)</span><span class="cheat-how">/wx:debug</span></div>
       </div>
 
       <h3>📊 Default Values</h3>
@@ -1967,14 +1970,19 @@
             <tr><td>Glow</td><td>ON</td></tr>
             <tr><td>Sound</td><td>ON</td></tr>
             <tr><td>Pattern</td><td>AUTO</td></tr>
+            <tr><td>Bounce</td><td>OFF</td></tr>
             <tr><td>Channel</td><td>-31</td></tr>
-            <tr><td>Pipe Style</td><td>TALL</td></tr>
-            <tr><td>Shape</td><td>NONE (manual)</td></tr>
+            <tr><td>Pipe Style</td><td>TALL (change via Panel)</td></tr>
+            <tr><td>Shape</td><td>CIRCLE</td></tr>
+            <tr><td>Shape Scale</td><td>2.0</td></tr>
           </tbody>
         </table>
       </div>
 
-      <h3>💬 Chat Commands</h3>
+      <h3>💬 Chat Commands (Owner Only)</h3>
+      <p>Type these in <strong>local chat</strong> (channel 0). Only the fountain owner can use them.</p>
+
+      <h4>🎭 Show Commands</h4>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Command</th><th>Action</th></tr></thead>
@@ -1986,7 +1994,33 @@
             <tr><td><code>/wx:show vampire</code></td><td>Start Vampire show</td></tr>
             <tr><td><code>/wx:show stop</code></td><td>Stop current show</td></tr>
             <tr><td><code>/wx:show loop</code></td><td>Toggle loop mode</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>🔄 Pattern Commands</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><code>/wx:pattern list</code></td><td>Show all 22 pattern names (P0–P21)</td></tr>
+            <tr><td><code>/wx:pattern 5</code></td><td>Lock pattern #5 (STATIC mode) — any number 0–21</td></tr>
+            <tr><td><code>/wx:pattern auto</code></td><td>Cycle through all patterns automatically</td></tr>
+            <tr><td><code>/wx:pattern random</code></td><td>Random pattern each cycle</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>🔧 Utility Commands</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Command</th><th>Action</th></tr></thead>
+          <tbody>
             <tr><td><code>/wx:straighten</code></td><td>Reset all pipes to vertical (world up)</td></tr>
+            <tr><td><code>/wx:debug</code></td><td>Toggle debug output for all scripts</td></tr>
+            <tr><td><code>/wx:debug on</code></td><td>Enable debug (use <code>off</code> to disable)</td></tr>
+            <tr><td><code>/wx:debug:engine</code></td><td>Debug one script only (engine, console, animate, show, particle)</td></tr>
+            <tr><td><code>/wx:memory</code></td><td>Toggle memory profiling across all scripts</td></tr>
           </tbody>
         </table>
       </div>
@@ -1998,7 +2032,7 @@
 <footer class="footer">
   <div class="footer-brand">💧 WaterWorx — S.M.A.R.T Fountain System V4.0</div>
   <p>Complete water choreography for Second Life</p>
-  <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">Mix patterns + colors for unique looks · Run shows for automated performances · Add multiple fountains for grand displays</p>
+  <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">22 patterns · 51 colors · 10 themes · 5 choreographed shows · Multi-fountain sync · Chat commands</p>
   <div class="footer-links">
     <a href="https://marketplace.secondlife.com/p/SMART-PRO-EDITION-NEXT-LEVEL-FOUNTAIN/23738894" target="_blank" rel="noopener">🛍️ Buy on Marketplace</a>
     <a href="#top">Back to Top</a>
